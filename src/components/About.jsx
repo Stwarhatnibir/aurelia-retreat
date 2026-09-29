@@ -38,7 +38,7 @@ export default function About() {
             className="h-full w-full"
           >
             <motion.img
-              src="/images/about.jpg"
+              src="/images/about.webp"
               alt="Interior of Aurelia Retreat"
               style={{ y: imageY, scale: 1.25 }}
               className="h-full w-full object-cover"

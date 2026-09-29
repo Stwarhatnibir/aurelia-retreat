@@ -6,19 +6,19 @@ const rooms = [
     name: "The Cedar Suite",
     details: "45 m² · King bed · Valley view",
     price: "₹14,500",
-    image: "/images/room1.jpg",
+    image: "/images/room1.webp",
   },
   {
     name: "The Stone Loft",
     details: "60 m² · King bed · Private terrace",
     price: "₹19,000",
-    image: "/images/room2.jpg",
+    image: "/images/room2.webp",
   },
   {
     name: "The Wool Cabin",
     details: "38 m² · Queen bed · Fireplace",
     price: "₹12,000",
-    image: "/images/room3.jpg",
+    image: "/images/room3.webp",
   },
 ];
 

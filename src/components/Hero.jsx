@@ -26,7 +26,7 @@ export default function Hero() {
         animate={{ scale: 1 }}
         transition={{ duration: 2.5, ease }}
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
+        style={{ backgroundImage: "url('/images/hero.webp')" }}
       />
 
       {/* Dark overlay so text stays readable */}
