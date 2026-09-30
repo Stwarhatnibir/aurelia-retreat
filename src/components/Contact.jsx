@@ -110,15 +110,32 @@ export default function Contact() {
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const found = validate(values);
     setErrors(found);
     if (Object.keys(found).length > 0) return;
 
     setStatus("sending");
-    // Fake delay for now. We will connect a real service in the deploy step.
-    setTimeout(() => setStatus("sent"), 1400);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          subject: `New booking request from ${values.name}`,
+          from_name: "Aurelia Retreat website",
+          ...values,
+        }),
+      });
+      const data = await res.json();
+      setStatus(data.success ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   };
 
   const reset = () => {
@@ -247,6 +264,11 @@ export default function Contact() {
                 >
                   {status === "sending" ? "Sending..." : "Request booking"}
                 </button>
+                {status === "error" && (
+                  <p className="text-center text-xs text-[#e0917a]">
+                    Something went wrong. Please try again or email us directly.
+                  </p>
+                )}
               </motion.form>
             )}
           </AnimatePresence>
