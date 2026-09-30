@@ -132,6 +132,7 @@ export default function Contact() {
         }),
       });
       const data = await res.json();
+
       setStatus(data.success ? "sent" : "error");
     } catch {
       setStatus("error");
